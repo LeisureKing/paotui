@@ -13,6 +13,11 @@ public class Order {
 	private String launchid;
 	private String reciveid;
 	
+	
+	
+	public void Order() {
+	}
+	
 	public Order(String id, String title, String content, Date expecttime, Date time, String state, float price,
 			String launchid, String reciveid) {
 		super();

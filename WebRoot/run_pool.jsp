@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -34,7 +34,7 @@
 
 <div data-am-widget="intro" class="am-intro am-cf am-intro-default" id="normal">
 	<c:if test="${empty orders}">
-		<c:redirect url="/order?method=findOrders"/>
+		<c:redirect url="/OrderServlet?method=findOrders"/>
 	</c:if>
 	<c:forEach items="${orders}" var="order">
 	    <div class="am-g am-intro-bd">
@@ -42,7 +42,7 @@
 	            <div class="am-intro-left am-u-sm-3"><img src="images/boy.png"/></div>
 	            <div class="am-intro-right am-u-sm-9">
 	                <div class="text">
-	                    <span style="float: left;color: black;font-size: 16px"><i>${order.username}</i></span>
+	                    <span style="float: left;color: black;font-size: 16px"><i>${order.id}</i></span>
 	                    <span class="fr black" style="margin-right: 2%"><i>
 	                    	<c:if test="${order.state == 0}">
 	                    		待抢单

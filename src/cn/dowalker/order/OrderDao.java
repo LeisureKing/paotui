@@ -35,7 +35,7 @@ public class OrderDao {
 	public List<Order> getOrders() {
 		QueryRunner qr=new QueryRunner(DataSourceUtil.getDataSource());
 		try {
-			String sql="select *from order";
+			String sql="select * from `order`";
 			return qr.query(sql, new BeanListHandler<>(Order.class));
 		}catch (SQLException e) {
 			e.printStackTrace();

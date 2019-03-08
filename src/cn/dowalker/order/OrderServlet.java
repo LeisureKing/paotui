@@ -33,7 +33,7 @@ public class OrderServlet extends BaseServlet {
 	public String findOrders(HttpServletRequest request,HttpServletResponse response)throws Exception {
 		List<Order> orders = orderService.findOrders();
 		request.setAttribute("orders", orders);
-		return null;
+		return "/run_pool.jsp";
 	}
 	
 	public String findOrder(HttpServletRequest request,HttpServletResponse response)throws Exception {

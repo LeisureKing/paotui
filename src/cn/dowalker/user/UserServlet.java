@@ -84,9 +84,9 @@ public class UserServlet extends BaseServlet {
 			session.setAttribute("verifyCode", verifyCode);
 			//发送短信
 			ZhenziSmsClient client = new ZhenziSmsClient("https://sms_developer.zhenzikj.com", "100937", 
-					"0689e4db-363c-4db6-9ec7-c17ce463c8f4");
+					"MmQ5NjVmNmQtNGIwNi00YTAwLWEyYWYtMDcyMjA2NjE4MDBl");
 			String result = client.send(phone, "您的验证码为:" + verifyCode + "，该码有效期为5分钟.");
-			System.out.println("发送短信。。。。。。");
+			System.out.println("发送短信。。。。。。到"+phone);
 			json = JSONObject.parseObject(result);
 			if(json.getIntValue("code") != 0){//发送短信失败
 				response.setContentType("text/plain;charset=UTF-8");
@@ -115,17 +115,19 @@ public class UserServlet extends BaseServlet {
 		UserService userService=new UserService();
 		if(userService.checkUser(request.getParameter("phone"))!=null){
 			msg = "此号码已使用，请重新输入！";
+		}else if (!request.getSession().getAttribute("verifyCode").equals(request.getParameter("verifyCode"))) {
+			msg = "验证码错误！";
 		}else {
 			userService.regist(user);
 			msg = "注册成功！";
 			response.setContentType("text/html;charset=utf-8");
-			response.getWriter().write( "<script>alert('"+msg+"'); window.location='/toMemberLogin.html';window.close();</script>");
+			response.getWriter().write( "<script>alert('"+msg+"'); window.location='/paotui/toMemberLogin.html';window.close();</script>");
 			response.getWriter().flush();
 			return null;
 		}
 		System.out.println(msg);
 		response.setContentType("text/html;charset=utf-8");
-		response.getWriter().write( "<script>alert('"+msg+"'); window.location='/toMemberRegist.html';window.close();</script>");
+		response.getWriter().write( "<script>alert('"+msg+"'); window.location='/paotui/toMemberRegist.html';window.close();</script>");
 		response.getWriter().flush();
 		return null;
 	}
