@@ -38,28 +38,28 @@
 	</c:if>
 	<c:forEach items="${orders}" var="order">
 	    <div class="am-g am-intro-bd">
-	        <a href="content.html">
+	        <a href="${pageContext.request.contextPath}/OrderServlet?method=findOrder&id=${order.order.id}">
 	            <div class="am-intro-left am-u-sm-3"><img src="images/boy.png"/></div>
 	            <div class="am-intro-right am-u-sm-9">
 	                <div class="text">
-	                    <span style="float: left;color: black;font-size: 16px"><i>${order.id}</i></span>
+	                    <span style="float: left;color: black;font-size: 16px"><i>${order.username}</i></span>
 	                    <span class="fr black" style="margin-right: 2%"><i>
-	                    	<c:if test="${order.state == 0}">
+	                    	<c:if test="${order.order.state == 0}">
 	                    		待抢单
 	                    	</c:if>
-	                    	<c:if test="${order.state == 1}">
+	                    	<c:if test="${order.order.state == 1}">
 	                    		进行中
 	                    	</c:if>
-	                    	<c:if test="${order.state == 2}">
+	                    	<c:if test="${order.order.state == 2}">
 	                    		已完成
 	                    	</c:if>
 	                    </i></span>
-	                    <span class="fr green" style="margin-right: 5%">${order.title}</span>
+	                    <span class="fr green" style="margin-right: 5%">${order.order.title}</span>
 	                </div>
-	                <p>${order.content}</p>
+	                <p>${order.order.content}</p>
 	                <div class="text">
-	                    <span class="fl">${order.time}</span>
-	                    <span class="fr"><i>赚</i><i class="price">${order.price}</i><i>元</i></span>
+	                    <span class="fl">${order.order.time}</span>
+	                    <span class="fr"><i>赚</i><i class="price">${order.order.price}</i><i>元</i></span>
 	                </div>
 	            </div>
 	        </a>
@@ -68,7 +68,7 @@
 </div>
 
 <div class="communityPage-publish-btn cmn-theme-bgcolor" id="communityPage-publish-btn"><a id="down_order"
-                                                                                           href="add_order.html"
+                                                                                           href="user/add_order.jsp"
                                                                                            style="color: white">下单</a>
 </div>
 

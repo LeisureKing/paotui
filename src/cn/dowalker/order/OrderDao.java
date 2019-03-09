@@ -3,14 +3,12 @@ package cn.dowalker.order;
 import java.sql.SQLException;
 import java.util.List;
 
-import javax.enterprise.inject.New;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import cn.dowalker.bean.Order;
-import cn.dowalker.bean.User;
 import cn.dowalker.utils.DataSourceUtil;
 
 public class OrderDao {
@@ -21,8 +19,9 @@ public class OrderDao {
 	public void insertOrder(Order order) {
 		QueryRunner qr=new QueryRunner(DataSourceUtil.getDataSource());
 		try {
-			String sql="insert into order values (?,?,?,?,?,0,?,?)";
-			qr.update(sql,order.getId(),order.getTitle(),order.getContent(),order.getExpecttime(),order.getTime(),order.getPrice(),order.getLaunchid());
+			String sql="insert into `order` values (?,?,?,?,?,?,?,?,?,?)";
+			qr.update(sql,order.getId(),order.getTitle(),order.getContent(),order.getExpecttime(),
+					order.getTime(),order.getState(),order.getPrice(),order.getLaunchid(),order.getAddressid(),"");
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -35,7 +34,7 @@ public class OrderDao {
 	public List<Order> getOrders() {
 		QueryRunner qr=new QueryRunner(DataSourceUtil.getDataSource());
 		try {
-			String sql="select * from `order`";
+			String sql="select * from `order` where state<2";
 			return qr.query(sql, new BeanListHandler<>(Order.class));
 		}catch (SQLException e) {
 			e.printStackTrace();
@@ -49,7 +48,7 @@ public class OrderDao {
 	public void updateState(String id, int state) {
 		QueryRunner qr=new QueryRunner(DataSourceUtil.getDataSource());
 		try {
-			String sql = "update order set state=? where id=?";
+			String sql = "update `order` set state=? where id=?";
 			qr.update(sql, state, id);
 		} catch(SQLException e) {
 			throw new RuntimeException(e);
@@ -64,7 +63,7 @@ public class OrderDao {
 	public void updateReciveid(String id, String reciveid) {
 		QueryRunner qr=new QueryRunner(DataSourceUtil.getDataSource());
 		try {
-			String sql = "update order set reciveid=? where id=?";
+			String sql = "update `order` set reciveid=? where id=?";
 			qr.update(sql, reciveid, id);
 		} catch(SQLException e) {
 			throw new RuntimeException(e);
@@ -78,7 +77,7 @@ public class OrderDao {
 	public void deleteReciveid(String id) {
 		QueryRunner qr=new QueryRunner(DataSourceUtil.getDataSource());
 		try {
-			String sql = "update order set reciveid='' where id=?";
+			String sql = "update `order` set reciveid='' where id=?";
 			qr.update(sql,id);
 		} catch(SQLException e) {
 			throw new RuntimeException(e);
@@ -95,7 +94,7 @@ public class OrderDao {
 	public Order findOrder(String id) {
 		QueryRunner qRunner=new QueryRunner(DataSourceUtil.getDataSource());
 		try {
-			String sql = "select * from order where id=?";
+			String sql = "select * from `order` where id=?";
 			return qRunner.query(sql, new BeanHandler<Order>(Order.class), id );
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -110,8 +109,8 @@ public class OrderDao {
 	public List<Order> findOrderByRid(String id) {
 		QueryRunner qRunner=new QueryRunner(DataSourceUtil.getDataSource());
 		try {
-			String sql = "select * from order where reciveid=?";
-			return qRunner.query(sql, new BeanListHandler<>(Order.class));
+			String sql = "select * from `order` where reciveid=?";
+			return qRunner.query(sql, new BeanListHandler<>(Order.class),id);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -125,8 +124,8 @@ public class OrderDao {
 	public List<Order> findOrderByLid(String id) {
 		QueryRunner qRunner=new QueryRunner(DataSourceUtil.getDataSource());
 		try {
-			String sql = "select * from order where launchid=?";
-			return qRunner.query(sql, new BeanListHandler<>(Order.class));
+			String sql = "select * from `order` where launchid=?";
+			return qRunner.query(sql, new BeanListHandler<>(Order.class),id);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}

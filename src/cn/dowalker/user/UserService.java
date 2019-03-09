@@ -1,5 +1,6 @@
 package cn.dowalker.user;
 
+import cn.dowalker.bean.Address;
 import cn.dowalker.bean.User;
 
 /**
@@ -45,5 +46,11 @@ public class UserService {
 		return userDao.findByPhone(phone);
 	}
 	
-	
+	public Address findByAddressByUid(String uid){
+		return userDao.findByAddressByUid(uid);
+	}
+
+	public void updatePassword(String password, String phone) {
+		userDao.updatePassword(password,phone);
+	}
 }

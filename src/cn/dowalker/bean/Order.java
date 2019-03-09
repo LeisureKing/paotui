@@ -8,17 +8,16 @@ public class Order {
 	private String content;
 	private Date expecttime;
 	private Date time;
-	private String state;
+	private int state;
 	private float price;
 	private String launchid;
 	private String reciveid;
+	private String addressid;
 	
 	
 	
-	public void Order() {
-	}
 	
-	public Order(String id, String title, String content, Date expecttime, Date time, String state, float price,
+	public Order(String id, String title, String content, Date expecttime, Date time, int state, float price,
 			String launchid, String reciveid) {
 		super();
 		this.id = id;
@@ -32,6 +31,13 @@ public class Order {
 		this.reciveid = reciveid;
 	}
 	public Order() {
+	}
+	
+	public String getAddressid() {
+		return addressid;
+	}
+	public void setAddressid(String addressid) {
+		this.addressid = addressid;
 	}
 	public String getId() {
 		return id;
@@ -63,10 +69,10 @@ public class Order {
 	public void setTime(Date time) {
 		this.time = time;
 	}
-	public String getState() {
+	public int getState() {
 		return state;
 	}
-	public void setState(String state) {
+	public void setState(int state) {
 		this.state = state;
 	}
 	public float getPrice() {

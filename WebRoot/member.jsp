@@ -34,9 +34,9 @@
 			</div>
 		</div>
 		<ul class="member-nav">
-			<a href="user/address.jsp"><li><i class="am-icon-map-marker"></i><span>收货地址</span></li></a>
-			<a href="user/order.jsp"><li><i class="am-icon-cart-arrow-down"></i><span>我的发布</span></li></a>
-			<a href="user/run_order.jsp"><li><i class="am-icon-newspaper-o"></i><span>我的抢单</span></li></a>
+			<a href="${pageContext.request.contextPath}/AddressServlet?method=findAllAddress"><li><i class="am-icon-map-marker"></i><span>收货地址</span></li></a>
+			<a href="${pageContext.request.contextPath}/OrderServlet?method=findOrdersByLid"><li><i class="am-icon-cart-arrow-down"></i><span>我的发布</span></li></a>
+			<a href="${pageContext.request.contextPath}/OrderServlet?method=findOrdersByRid"><li><i class="am-icon-newspaper-o"></i><span>我的抢单</span></li></a>
 
 			<!--
                         <li><a href=""><i class="am-icon-cart-arrow-down"></i><span>购物车</span></a></li>
@@ -48,7 +48,7 @@
 			<a href="user/money.html"><li><i class="am-icon-cc-mastercard"></i><span>我的积分</li></a>
 		</ul>
 		<ul class="member-nav mt">
-			<a href="yhq.html"><li><i class="am-icon-phone"></i>联系我们</li></a>
+			<a href="#"><li><i class="am-icon-phone"></i>联系我们</li></a>
 		</ul>
 		<div class="h50"></div>
 		<div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default footer "  id="tab3">

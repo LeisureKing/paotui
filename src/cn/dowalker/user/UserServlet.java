@@ -44,7 +44,7 @@ public class UserServlet extends BaseServlet {
 			return "/index.html";
 		} catch (UserException e) {
 			response.setContentType("text/html;charset=utf-8");
-			response.getWriter().write( "<script>alert('"+e.getMessage()+"'); window.location='/toMemberLogin.html';window.close();</script>");
+			response.getWriter().write( "<script>alert('"+e.getMessage()+"'); window.location='/paotui/toMemberLogin.html';window.close();</script>");
 			response.getWriter().flush();
 			return null;
 		}
@@ -102,7 +102,7 @@ public class UserServlet extends BaseServlet {
 	}
 	
 	
-	
+	//注册
 	public String regist(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		String msg="";
 		User user=new User();
@@ -132,5 +132,21 @@ public class UserServlet extends BaseServlet {
 		return null;
 	}
 	
+	public String backPassword(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		String phone = request.getParameter("phone");
+		String msg = "";
+		
+		UserService userService=new UserService();
+		if (!request.getSession().getAttribute("verifyCode").equals(request.getParameter("verifyCode"))) {
+			msg = "验证码错误！";
+		}else {
+			userService.updatePassword(request.getParameter("password"),phone);
+			msg = "修改成功，请重新登录！";
+			response.setContentType("text/html;charset=utf-8");
+			response.getWriter().write( "<script>alert('"+msg+"'); window.location='/paotui/toMemberLogin.html';window.close();</script>");
+			response.getWriter().flush();
+		}
+		return null;
+	}
 	
 }

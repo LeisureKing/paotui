@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,16 +28,16 @@
     </div>
 </header>
 <div class="am-g am-intro-bd" style="margin-top: 2px">
-    <a href="content.html">
+    <a href="${pageContext.request.contextPath}/OrderServlet?method=findOrder&id=${order.order.id}">
         <div class="am-intro-left am-u-sm-3"><img src="images/p.png"/></div>
         <div class="am-intro-right am-u-sm-9">
             <div class="text">
-                <span style="float: left;color: black;font-size: 16px"><i>王同学</i></span>
+                <span style="float: left;color: black;font-size: 16px"><i>${order.username }</i></span>
                 <span class="fr" style="margin-right: 2%">举报</span>
                 <span class="fr" style="margin-right: 6%"><i><i class="am-icon-phone"></i></i></span>
 
             </div>
-            <span class="fl" style="font-size: 12px">5分钟前</span><span
+            <span class="fl" style="font-size: 12px">${order.order.time}</span><span
                 style="color: gray;margin-top: 2px;margin-left: 6px;font-size: 12px">来自【西安欧亚学院】</span>
             <hr>
             <div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{}'>
@@ -45,20 +47,20 @@
                     <li><img src="images/banner4.jpg"></li>
                 </ul>
             </div>
-            <p style="margin-top: 4px">超市带饭鱼香茄子</p>
+            <p style="margin-top: 4px">${order.order.content}</p>
             <p style="margin-top: 4px">标签</p>
 
             <i class="am-icon-map-marker"></i><span
-                style="color: gray;margin-top: 2px;margin-left: 6px;font-size: 12px">男生公寓一号楼209</span>
-            <p style="color: gray;font-size: 12px">期望完成时间：2018-10-10 18:00:00</p>
+                style="color: gray;margin-top: 2px;margin-left: 6px;font-size: 12px">${order.address}</span>
+            <p style="color: gray;font-size: 12px">期望完成时间：${order.order.expecttime}</p>
             <hr>
             <div class="text">
-                <span class="fr"><i>已支付</i><i style="color: red;font-size: 16px">2.0</i><i>元</i></span>
+                <span class="fr"><i>已支付</i><i style="color: red;font-size: 16px">${order.order.price}</i><i>元</i></span>
             </div>
         </div>
     </a>
 </div>
-<div class="communityPage-publish-btn cmn-theme-bgcolor" id="communityPage-publish-btn"><a id="go_order" href="run_order.html" style="color: white" >抢单</a></div><div data-am-widget="duoshuo" class="am-duoshuo am-duoshuo-default" data-ds-short-name="amazeui">
+<div class="communityPage-publish-btn cmn-theme-bgcolor" id="communityPage-publish-btn"><a id="go_order" href="${pageContext.request.contextPath}/OrderServlet?method=reciveOrder&id=${order.order.id}" style="color: white" >抢单</a></div><div data-am-widget="duoshuo" class="am-duoshuo am-duoshuo-default" data-ds-short-name="amazeui">
     <div class="ds-thread">
     </div>
 </div>
