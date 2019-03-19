@@ -19,12 +19,12 @@
             <i class="am-header-icon am-icon-angle-left"></i>
         </a>
     </div>
-</header>
-<form action="/paotui/AddressServlet?method=addAddress"  method="post">
     <h1 class="am-header-title"><a href="#title-link" class="" style="color: #333;">添加地址</a></h1>
     <div class="am-header-right am-header-nav">
-        <input type="submit" value="提交" style="color:#79bbff" />
+        <a href="#" onClick="addressform.submit();" style="color: #79bbff">提交</a>
     </div>
+</header>
+<form action="/paotui/AddressServlet?method=addAddress" name="addressform" method="post">
 
     <div class="demo" style="background: white;margin-top: 2px">
         <span class="tip gray">收货人： </span><input type="text" class="input add_input1" name="username" placeholder="请输入收货人"

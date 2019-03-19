@@ -39,4 +39,9 @@ public class OrderService {
 	public void deleteReciveid(String id) {
 		orderDao.deleteReciveid(id);
 	}
+	
+	public int getCount(String id) {
+		return orderDao.getCount(id);
+	}
+	
 }

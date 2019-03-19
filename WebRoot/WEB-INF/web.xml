@@ -34,6 +34,13 @@
     <description>This is the description of my J2EE component</description>
     <servlet-class>cn.dowalker.address.AddressServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>NoticeServlet</servlet-name>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <description>This is the description of my J2EE component</description>
+    <servlet-class>cn.dowalker.notice.NoticeServlet</servlet-class>
+  </servlet>
+
 
    
 
@@ -48,6 +55,10 @@
   <servlet-mapping>
     <servlet-name>AddressServlet</servlet-name>
     <url-pattern>/AddressServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>NoticeServlet</servlet-name>
+    <url-pattern>/NoticeServlet</url-pattern>
   </servlet-mapping>
   
 

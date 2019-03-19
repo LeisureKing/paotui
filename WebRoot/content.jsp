@@ -38,7 +38,7 @@
 
             </div>
             <span class="fl" style="font-size: 12px">${order.order.time}</span><span
-                style="color: gray;margin-top: 2px;margin-left: 6px;font-size: 12px">来自【西安欧亚学院】</span>
+                style="color: gray;margin-top: 2px;margin-left: 6px;font-size: 12px">来自【河南许昌学院】</span>
             <hr>
             <div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{}'>
                 <ul class="am-slides">
@@ -60,7 +60,9 @@
         </div>
     </a>
 </div>
-<div class="communityPage-publish-btn cmn-theme-bgcolor" id="communityPage-publish-btn"><a id="go_order" href="${pageContext.request.contextPath}/OrderServlet?method=reciveOrder&id=${order.order.id}" style="color: white" >抢单</a></div><div data-am-widget="duoshuo" class="am-duoshuo am-duoshuo-default" data-ds-short-name="amazeui">
+<c:if test="${order.order.state == 0}">
+	<div class="communityPage-publish-btn cmn-theme-bgcolor" id="communityPage-publish-btn"><a id="go_order" href="${pageContext.request.contextPath}/OrderServlet?method=reciveOrder&id=${order.order.id}" style="color: white" >抢单</a></div><div data-am-widget="duoshuo" class="am-duoshuo am-duoshuo-default" data-ds-short-name="amazeui">
+</c:if>
     <div class="ds-thread">
     </div>
 </div>

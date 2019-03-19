@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import cn.dowalker.bean.Order;
 import cn.dowalker.utils.DataSourceUtil;
@@ -129,5 +130,22 @@ public class OrderDao {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
+	}
+	
+	/**
+	 * 查找已完成的订单数量
+	 * @param uid
+	 * @return
+	 */
+	public int getCount(String uid) {
+		QueryRunner qr=new QueryRunner(DataSourceUtil.getDataSource());
+		try {
+			String sql="select count(id) from `order` where reciveid=? and state=2";
+			Object obj = qr.query(sql, new ScalarHandler(),uid);
+			return Integer.parseInt(obj.toString());
+		}catch (SQLException e) {
+		   e.printStackTrace();
+		}
+		return 0;
 	}
 }

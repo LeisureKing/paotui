@@ -11,7 +11,7 @@
 
         $("#tab").append(" <ul class=\"am-navbar-nav am-cf am-avg-sm-4\">\n" +
             "\t\t          <li >\n" +
-            "\t\t            <a href=\"index.html\" class=\"\">\n" +
+            "\t\t            <a href=\"index.jsp\" class=\"\">\n" +
             "\t\t                <span class=\"\"><img src=\"images/navs.png\"/></span>\n" +
             "\t\t                <span class=\"am-navbar-label\" >首页</span>\n" +
             "\t\t            </a>\n" +
@@ -38,7 +38,7 @@
             "\t\t      </ul>");
         $("#tab1").append(" <ul class=\"am-navbar-nav am-cf am-avg-sm-4\">\n" +
             "\t\t          <li >\n" +
-            "\t\t            <a href=\"index.html\" class=\"\">\n" +
+            "\t\t            <a href=\"index.jsp\" class=\"\">\n" +
             "\t\t                <span class=\"\"><img src=\"images/nav.png\"/></span>\n" +
             "\t\t                <span class=\"am-navbar-label\">首页</span>\n" +
             "\t\t            </a>\n" +
@@ -65,7 +65,7 @@
             "\t\t      </ul>");
         $("#tab2").append(" <ul class=\"am-navbar-nav am-cf am-avg-sm-4\">\n" +
             "\t\t          <li >\n" +
-            "\t\t            <a href=\"index.html\" class=\"\">\n" +
+            "\t\t            <a href=\"index.jsp\" class=\"\">\n" +
             "\t\t                <span class=\"\"><img src=\"images/nav.png\"/></span>\n" +
             "\t\t                <span class=\"am-navbar-label\">首页</span>\n" +
             "\t\t            </a>\n" +
@@ -92,7 +92,7 @@
             "\t\t      </ul>");
         $("#tab3").append(" <ul class=\"am-navbar-nav am-cf am-avg-sm-4\">\n" +
             "\t\t          <li >\n" +
-            "\t\t            <a href=\"index.html\" class=\"\">\n" +
+            "\t\t            <a href=\"index.jsp\" class=\"\">\n" +
             "\t\t                <span class=\"\"><img src=\"images/nav.png\"/></span>\n" +
             "\t\t                <span class=\"am-navbar-label\">首页</span>\n" +
             "\t\t            </a>\n" +

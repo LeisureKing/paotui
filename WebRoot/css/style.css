@@ -8,6 +8,16 @@ li, dl, dt, dd, form, a, fieldset, input, th, td, i {
     font-weight: normal;
 }
 
+@media only screen and (min-width: 1025px) {
+    
+    body{
+    	width: 800px;
+    	text-align:center;
+		margin-left:auto;
+		margin-right:auto;
+    }
+}
+
 html {
     height: 100%;
 }

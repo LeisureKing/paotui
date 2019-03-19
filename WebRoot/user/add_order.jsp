@@ -29,6 +29,7 @@
   			response.sendRedirect(request.getContextPath()+"/toMemberLogin.html");
 		}
 %>
+
 <script type="text/javascript">
 
     $(function () {

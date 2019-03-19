@@ -1,5 +1,7 @@
 package cn.dowalker.user;
 
+import static org.hamcrest.CoreMatchers.nullValue;
+
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Random;
@@ -15,6 +17,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.zhenzi.sms.ZhenziSmsClient;
 
 import cn.dowalker.bean.User;
+import cn.dowalker.order.OrderService;
 import cn.dowalker.utils.BaseServlet;
 import cn.dowalker.utils.UUIDUtils;
 /**
@@ -41,7 +44,7 @@ public class UserServlet extends BaseServlet {
 		try {
 			User user=userService.login(form);
 			request.getSession().setAttribute("user", user);
-			return "/index.html";
+			return "/index.jsp";
 		} catch (UserException e) {
 			response.setContentType("text/html;charset=utf-8");
 			response.getWriter().write( "<script>alert('"+e.getMessage()+"'); window.location='/paotui/toMemberLogin.html';window.close();</script>");
@@ -147,6 +150,30 @@ public class UserServlet extends BaseServlet {
 			response.getWriter().flush();
 		}
 		return null;
+	}
+	
+	/**
+	 * 获取积分和订单数
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws Exception
+	 */
+	public String getPoint(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		if (user!=null) {
+			String uid = user.getId();
+			
+			OrderService orderService = new OrderService();
+			int count = orderService.getCount(uid);
+			request.setAttribute("point", count*10);
+			request.setAttribute("count", count);
+		}else {
+			response.sendRedirect(request.getContextPath()+"/toMemberLogin.html");
+			return null;
+		}
+		return "/user/money.jsp";
 	}
 	
 }

@@ -45,10 +45,10 @@
 			<li><a href=""><i class="am-icon-bell-o"></i><span>系统通知</span></a></li>
 -->
 			<a href="user/account.jsp"><li><i class="am-icon-credit-card"></i><span>账户管理</span></li></a>
-			<a href="user/money.html"><li><i class="am-icon-cc-mastercard"></i><span>我的积分</li></a>
+			<a href="${pageContext.request.contextPath}/UserServlet?method=getPoint"><li><i class="am-icon-cc-mastercard"></i><span>我的积分</span></li></a>
 		</ul>
 		<ul class="member-nav mt">
-			<a href="#"><li><i class="am-icon-phone"></i>联系我们</li></a>
+			<a href="${pageContext.request.contextPath}/NoticeServlet?method=getMyNotice"><li><i class="am-icon-phone"></i><span>我的通知</span></li></a>
 		</ul>
 		<div class="h50"></div>
 		<div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default footer "  id="tab3">

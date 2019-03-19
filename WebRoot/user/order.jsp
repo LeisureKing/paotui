@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page import="cn.dowalker.bean.User" %>
 <!DOCTYPE html>
 <html>
@@ -22,6 +23,20 @@
   			request.getRequestDispatcher("/toMemberLogin.html").forward(request, response);
 		}
 %>
+
+<style type="text/css">
+@media only screen and (min-width: 1025px) {
+    .o-con-img{
+   	    float: left;
+	    padding-top: 2%;
+	    padding-bottom: 2%;
+	    width: 8.5%;
+	    height: 100%;
+	    overflow: hidden;
+	    margin-bottom: 0.5rem;
+    }
+}
+</style>
 <body>
 <header data-am-widget="header" class="am-header am-header-default header">
     <div class="am-header-left am-header-nav">
@@ -49,7 +64,7 @@
 
 <c:forEach items="${orders}" var="order">
 	<div class="c-comment">
-	    <span class="c-comment-num">订单编号：${order.id }</span>
+	    <span class="c-comment-num">订单编号：${fn:substring(order.id, 0, 5)}</span>
 	    <span class="c-comment-suc">
 		    <c:if test="${order.state == 0}">
 	       		待抢单
@@ -71,7 +86,7 @@
 	        <div class="o-con-txt">
 	            <p>${order.title }</p>
 	            <p style="color: gray;margin-top: 2px;font-size: 12px">${order.time }</p>
-	            <span style="color: gray;margin-top: 2px;font-size: 12px">来自【西安欧亚学院】</span>
+	            <span style="color: gray;margin-top: 2px;font-size: 12px">来自【河南许昌学院】</span>
 	            <p class="price" style="font-size: 14px"> ${order.content }</p>
 	        </div>
 	        <div class="o-con-much"><h4></h4></div>

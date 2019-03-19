@@ -105,10 +105,18 @@ public class OrderServlet extends BaseServlet {
 	 */
 	public String findOrdersByRid(HttpServletRequest request,HttpServletResponse response)throws Exception {
 		User user = (User) request.getSession().getAttribute("user");
+		AddressService addressService = new AddressService();
 		if(user!=null){
 			String reciveid = user.getId();
 			List<Order> orders = orderService.findOrdersByRid(reciveid);
-			request.setAttribute("orders", orders);
+			List<OrderItem> orderItems = new ArrayList<OrderItem>();
+			for (Order order : orders) {
+				OrderItem orderItem = new OrderItem();
+				orderItem.setOrder(order);
+				orderItem.setPhone(addressService.findByAddressById(order.getAddressid()).getPhone());
+				orderItems.add(orderItem);
+			}
+			request.setAttribute("orderItems", orderItems);
 		}else {
 			response.sendRedirect(request.getContextPath()+"/toMemberLogin.html");
 			return null;
