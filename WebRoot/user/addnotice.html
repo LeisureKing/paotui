@@ -1,0 +1,42 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>校园跑腿</title>
+    <meta name="description" content="校园跑腿"/>
+    <meta name="keywords" content="校园跑腿"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/amazeui.min.css"/>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/amazeui.min.js"></script>
+    <script type="text/javascript" src="../js/application.js"></script>
+</head>
+<body>
+<header data-am-widget="header" class="am-header am-header-default header">
+    <div class="am-header-left am-header-nav">
+        <a href="javascript:history.go(-1)" class="">
+            <i class="am-header-icon am-icon-angle-left"></i>
+        </a>
+    </div>
+    <h1 class="am-header-title"><a href="#title-link" class="" style="color: #333;">添加地址</a></h1>
+    <div class="am-header-right am-header-nav">
+        <a href="#" onClick="noticeform.submit();" style="color: #79bbff">提交</a>
+    </div>
+</header>
+<form action="/paotui/NoticeServlet?method=insertNotice" name="noticeform" method="post" enctype="multipart/form-data">
+
+    
+    <div class="demo" style="background: white;margin-top: 2px">
+        <span class="tip gray">图片： </span><input class="input add_input1" name="image" type="file" size="30"/>
+
+    </div>
+    <div class="demo" style="background: white;margin-top: 2px">
+        <span class="tip gray">内容： </span><textarea  name="description" class="add_input" style="padding-left: 8px" placeholder="请输入通知内容" 
+        cols="10" rows="5"></textarea>
+
+    </div>
+    
+</form>
+</body>
+</html>
